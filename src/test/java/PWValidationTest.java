@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,31 +16,31 @@ public class PWValidationTest {
     BONUS:
   - Create Possibility to check a list of Passwords
  */
-    @ParameterizedTest
+    @ParameterizedTest(name = "Test Password: - {0} - with minimum length of {2} characters, minimum of {3} digits and {4} capital letters ")
+    @DisplayName("Password validation based on String input")
     @MethodSource
-    // Check the length of the password
+        // Check the length of the password
     public void PasswordValidationTest(String inputString, String expected, int minLength, int minNum, int minCap){
-        // Requirements for this Test
-//        int minLength = 8;
-//        int minNum = 2;
-//        int minCap = 2;
         // Calling Method
         String result = PWValidationApp.PWValidation(inputString, minLength, minNum, minCap);
         assertEquals(expected,result);
     }
     private static Stream<Arguments> PasswordValidationTest(){
-        //
+        // Constant variables throughout testing. Can be altered to match requirements
         int minLength = 8;
         int minNum = 2;
         int minCap = 2;
-        //
+        // Output of the test method
+        String FAIL = "Please enter at least " + minNum + "Numbers, " + minCap + "capital Letters and " + minLength + "Letters!";
+        String WIN = "You are good to go!";
+        // Define Stream of Arguments with relevant Datainput for the test method
         return Stream.of(
-                Arguments.of("PassWord123","You are good to go!", minLength, minNum, minCap),
-                Arguments.of("123", "Please enter at least " + minNum + "Numbers, " + minCap + "capital Letters and " + minLength + "Letters!", minLength, minNum, minCap),
-                Arguments.of("password123", "Please enter at least " + minNum + "Numbers, " + minCap + "capital Letters and " + minLength + "Letters!", minLength, minNum, minCap),
-                Arguments.of("pass123", "Please enter at least " + minNum + "Numbers, " + minCap + "capital Letters and " + minLength + "Letters!", minLength, minNum, minCap),
-                Arguments.of("Pass123", "Please enter at least " + minNum + "Numbers, " + minCap + "capital Letters and " + minLength + "Letters!", minLength, minNum, minCap),
-                Arguments.of("LlllllWWWll45", "You are good to go!", minLength, minNum, minCap)
+                Arguments.of("PassWord123",WIN, minLength, minNum, minCap),
+                Arguments.of("123", FAIL, minLength, minNum, minCap),
+                Arguments.of("password123", FAIL, minLength, minNum, minCap),
+                Arguments.of("pass123", FAIL, minLength, minNum, minCap),
+                Arguments.of("Pass123", FAIL, minLength, minNum, minCap),
+                Arguments.of("LlllllWWWll45", WIN, minLength, minNum, minCap)
         );
     }
 

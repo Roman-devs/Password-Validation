@@ -2,9 +2,9 @@ public class PWValidationApp {
 
     public static void main(String[] args) {
     }
-
-
-    // Password Validation Method calling three specific validation Methods
+//
+//Password Validation Method calling three specific validation Methods
+//
     public static String PWValidation(String inputString, int minimumLength, int minimumNumbers, int minimumCapital){
         boolean resultNumbers = checkIfInputContainsNumbers(inputString, minimumNumbers);
         boolean resultLength = checkLengthOfInput(inputString, minimumLength);
@@ -16,9 +16,9 @@ public class PWValidationApp {
             return "Please enter at least " + minimumNumbers + "Numbers, " + minimumCapital + "capital Letters and " + minimumLength + "Letters!";
         }
     }
-    //
-    // Method that checks if the minimum Capital Letter requirement is met
-    //
+//
+// Method that checks if the minimum Capital Letter requirement is met
+//
     private static boolean checkCapitalLetters(String inputString, int minimumCapital){
         char[] charactersFromInput = new char[inputString.length()];
         int counterCapital = 0;
@@ -36,15 +36,15 @@ public class PWValidationApp {
         }
 
     }
-    //
-    //  Method that checks if the minimum Length requirement is met
-    //
+//
+//  Method that checks if the minimum Length requirement is met
+//
     private static boolean checkLengthOfInput(String inputString, int minimumLength){
         return inputString.length() >= minimumLength;
     }
-    //
-    //  Method that checks if the input-contains-numbers requirement is met
-    //
+//
+//  Method that checks if the input-contains-numbers requirement is met
+//
     private static boolean checkIfInputContainsNumbers(String inputString, int minimumNumbers){
         char[] charactersFromInput = new char[inputString.length()];
         int counterNumbers = 0;
@@ -61,4 +61,7 @@ public class PWValidationApp {
             return false;
         }
     }
+//
+//
+//
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class PWValidationApp {
 
     public static void main(String[] args) {
@@ -5,7 +7,7 @@ public class PWValidationApp {
 //
 //Password Validation Method calling three specific validation Methods
 //
-    public static String PWValidation(String inputString, int minimumLength, int minimumNumbers, int minimumCapital){
+    public static String pwValidation(String inputString, int minimumLength, int minimumNumbers, int minimumCapital){
         boolean resultNumbers = checkIfInputContainsNumbers(inputString, minimumNumbers);
         boolean resultLength = checkLengthOfInput(inputString, minimumLength);
         boolean resultCapitalLetters =checkCapitalLetters(inputString, minimumCapital);
@@ -62,6 +64,14 @@ public class PWValidationApp {
         }
     }
 //
+// Bonus
 //
-//
+    public static String[] pwListValidation (String[] inputStringList, int minimumLength, int minimumNumbers, int minimumCapital){
+        String[] outputValidated = new String[inputStringList.length];
+        //
+        for (int i = 0; i < inputStringList.length; i++) {
+            outputValidated[i] = pwValidation(inputStringList[i], minimumLength, minimumNumbers, minimumCapital);
+        }
+        return outputValidated;
+    }
 }
